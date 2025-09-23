@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Planet Angular Diameter Tool</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Planet Angular Diameter</h1>
+  </header>
+
+<section id="controls">
+  <label for="observer">Observer:</label>
+  <select id="observer" class="dropdown"></select>
+
+  <label for="target">Target:</label>
+  <select id="target" class="dropdown"></select>
+
+  <button id="compute">Compute</button>
+</section>
+  <label for="yearRange">Show next:</label>
+  <select id="yearRange">
+    <option value="1">1 year</option>
+    <option value="2">2 years</option>
+    <option value="5" selected>5 years</option>
+    <option value="10">10 years</option>
+    <option value="20">20 years</option>
+  </select>
+  <section id="results">
+    <div id="stats">
+      <p><strong>Min Angular Diameter:</strong> <span id="minAngle">—</span></p>
+      <p><strong>Max Angular Diameter:</strong> <span id="maxAngle">—</span></p>
+    </div>
+    <canvas id="angleChart" width="600" height="300"></canvas>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+</html>

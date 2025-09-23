@@ -1,0 +1,35 @@
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  background: #f4f4f4;
+}
+header h1 {
+  text-align: center;
+}
+#controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.dropdown {
+  min-width: 180px;     
+  padding: 6px 10px;
+  font-size: 1rem;
+}
+#results {
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+#stats p {
+  margin: 4px 0;
+}
+canvas {
+  margin-top: 20px;
+}

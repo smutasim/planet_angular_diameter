@@ -1,0 +1,51 @@
+{
+  "generated_at": "2025-09-22T23:41:34.595938Z",
+  "source": "NASA JPL Horizons API",
+  "bodies": [
+    {
+      "body": "mercury",
+      "file": "data/mercury.json",
+      "samples": 7306
+    },
+    {
+      "body": "venus",
+      "file": "data/venus.json",
+      "samples": 7306
+    },
+    {
+      "body": "earth",
+      "file": "data/earth.json",
+      "samples": 7306
+    },
+    {
+      "body": "mars",
+      "file": "data/mars.json",
+      "samples": 7306
+    },
+    {
+      "body": "jupiter",
+      "file": "data/jupiter.json",
+      "samples": 7306
+    },
+    {
+      "body": "saturn",
+      "file": "data/saturn.json",
+      "samples": 7306
+    },
+    {
+      "body": "uranus",
+      "file": "data/uranus.json",
+      "samples": 7306
+    },
+    {
+      "body": "neptune",
+      "file": "data/neptune.json",
+      "samples": 7306
+    },
+    {
+      "body": "pluto",
+      "file": "data/pluto.json",
+      "samples": 7306
+    }
+  ]
+}
