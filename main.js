@@ -121,15 +121,14 @@ async function compute() {
 }
 
 function plotCharts(times, angles) {
+  console.log('angles:', angles);
+  console.log('all numbers:', angles.every(n => typeof n === 'number' && !isNaN(n)));
+
   const labels = times.map(t => new Date(t).toISOString().split("T")[0]);
 
   if (angleChart) angleChart.destroy();
   const canvas = document.getElementById('angleChart');
   const ctx = canvas.getContext('2d');
-  if (!ctx) {
-    alert("Canvas context not available");
-    return;
-  }
 
   angleChart = new Chart(document.getElementById('angleChart'), {
     type: 'line',
