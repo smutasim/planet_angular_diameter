@@ -74,6 +74,9 @@ async function compute() {
   const obsData = await loadBody(obs);
   const tarData = await loadBody(tar);
 
+  debugLog(`First obsData sample: ${JSON.stringify(obsData.samples_weekly[0])}`);
+  debugLog(`First tarData sample: ${JSON.stringify(tarData.samples_weekly[0])}`);
+
   const times  = [];
   const angles = [];
 
@@ -130,8 +133,6 @@ async function compute() {
 }
 
 function plotCharts(times, angles) {
-  debugLog(angles);
-  debugLog(angles.every(n => typeof n === 'number' && !isNaN(n)));
 
   const labels = times.map(t => new Date(t).toISOString().split("T")[0]);
 

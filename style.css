@@ -33,9 +33,3 @@ header h1 {
 canvas {
   margin-top: 20px;
 }
-canvas#angleChart {
-  width: 100% !important;
-  height: 300px !important;
-  max-width: 100%;
-  display: block;
-}
