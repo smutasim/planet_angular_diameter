@@ -3,7 +3,7 @@
 // =========================
 
 let manifest;
-let angleChart, illumChart;
+let angleChart;
 
 // Mean radii of major bodies (km)
 const PLANET_RADII_KM = {
@@ -124,6 +124,14 @@ function plotCharts(times, angles) {
   const labels = times.map(t => new Date(t).toISOString().split("T")[0]);
 
   if (angleChart) angleChart.destroy();
+  const canvas = document.getElementById('angleChart');
+  const ctx = canvas.getContext('2d');
+
+  // Handle Retina scaling
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = canvas.clientWidth * dpr;
+  canvas.height = canvas.clientHeight * dpr;
+  ctx.scale(dpr, dpr);
   angleChart = new Chart(document.getElementById('angleChart'), {
     type: 'line',
     data: {
