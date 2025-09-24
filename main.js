@@ -40,6 +40,15 @@ async function init() {
   document.getElementById("compute").addEventListener("click", compute);
 }
 
+function debugLog(msg) {
+  const logEl = document.getElementById('debugLog');
+  if (logEl) {
+    logEl.textContent += msg + '\n';
+    logEl.scrollTop = logEl.scrollHeight; // auto scroll
+  }
+  console.log(msg); // also log in console if available
+}
+
 async function loadBody(name) {
   return fetch(`data/${name}.json?ts=${Date.now()}`).then(r => r.json());
 }
@@ -121,8 +130,8 @@ async function compute() {
 }
 
 function plotCharts(times, angles) {
-  console.log('angles:', angles);
-  console.log('all numbers:', angles.every(n => typeof n === 'number' && !isNaN(n)));
+  debugLog(angles);
+  debugLog(angles.every(n => typeof n === 'number' && !isNaN(n)));
 
   const labels = times.map(t => new Date(t).toISOString().split("T")[0]);
 

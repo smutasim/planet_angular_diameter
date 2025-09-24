@@ -7,23 +7,23 @@
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-  <script>eruda.init();</script>
-
 </head>
 <body>
   <header>
     <h1>Planet Angular Diameter</h1>
   </header>
 
-<section id="controls">
-  <label for="observer">Observer:</label>
-  <select id="observer" class="dropdown"></select>
+  <section id="debugLog" style="background:#eee; padding:10px; margin:20px auto; max-width:800px; font-family: monospace; white-space: pre-wrap; height: 120px; overflow-y: auto;"></section>
 
-  <label for="target">Target:</label>
-  <select id="target" class="dropdown"></select>
+  <section id="controls">
+    <label for="observer">Observer:</label>
+    <select id="observer" class="dropdown"></select>
 
-  <button id="compute">Compute</button>
-</section>
+    <label for="target">Target:</label>
+    <select id="target" class="dropdown"></select>
+
+    <button id="compute">Compute</button>
+  </section>
   <label for="yearRange">Show next:</label>
   <select id="yearRange">
     <option value="1">1 year</option>
@@ -40,6 +40,6 @@
     <canvas id="angleChart" width="600" height="300"></canvas>
   </section>
 
-  <script src="main.js"></script>
+  <script src="main.js?ts=<?= Date.now() ?>"></script>
 </body>
 </html>
