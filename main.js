@@ -147,22 +147,15 @@ async function compute() {
       filteredAngles.push(angles[i]);
     }
   }
-  debugLog(`endDate: ${endDate}`);
-  debugLog(`years: ${years}`);
-  debugLog(`startDate: ${startDate.toISOString()}`);
-  debugLog(`filteredTimes: ${filteredTimes}`);
-  debugLog(`filteredAngles: ${filteredAngles}`);
 
   plotCharts(filteredTimes, filteredAngles);
 }
 
 function plotCharts(times, angles) {
 
-  const labels = times.map(t => new Date(t).toISOString().split("T")[0]);
+  const labels = times.map(t => parseHorizonDate(t).toISOString().split("T")[0]);
 
   if (angleChart) angleChart.destroy();
-  const canvas = document.getElementById('angleChart');
-  const ctx = canvas.getContext('2d');
 
   angleChart = new Chart(document.getElementById('angleChart'), {
     type: 'line',
