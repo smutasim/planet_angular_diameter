@@ -126,12 +126,11 @@ function plotCharts(times, angles) {
   if (angleChart) angleChart.destroy();
   const canvas = document.getElementById('angleChart');
   const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    alert("Canvas context not available");
+    return;
+  }
 
-  // Handle Retina scaling
-  const dpr = window.devicePixelRatio || 1;
-  canvas.width = canvas.clientWidth * dpr;
-  canvas.height = canvas.clientHeight * dpr;
-  ctx.scale(dpr, dpr);
   angleChart = new Chart(document.getElementById('angleChart'), {
     type: 'line',
     data: {
