@@ -40,15 +40,6 @@ async function init() {
   document.getElementById("compute").addEventListener("click", compute);
 }
 
-function debugLog(msg) {
-  const logEl = document.getElementById('debugLog');
-  if (logEl) {
-    logEl.textContent += msg + '\n';
-    logEl.scrollTop = logEl.scrollHeight; // auto scroll
-  }
-  console.log(msg); // also log in console if available
-}
-
 function parseHorizonDate(str) {
   // fix format to resolve ios bug
   str = str.replace("A.D. ", "").trim();
