@@ -74,9 +74,6 @@ async function compute() {
   const obsData = await loadBody(obs);
   const tarData = await loadBody(tar);
 
-  debugLog(`First obsData sample: ${JSON.stringify(obsData.samples_weekly[0])}`);
-  debugLog(`First tarData sample: ${JSON.stringify(tarData.samples_weekly[0])}`);
-
   const times  = [];
   const angles = [];
 
@@ -84,6 +81,7 @@ async function compute() {
                      tarData.samples_weekly.length);
   const radius_km = PLANET_RADII_KM[tar];
 
+  debugLog(`n value: ${n}`);
   for (let i = 0; i < n; i++) {
     const t  = obsData.samples_weekly[i].time_iso;
     const o  = obsData.samples_weekly[i].position_km;
@@ -95,7 +93,7 @@ async function compute() {
     times.push(t);
     angles.push(angularSize(radius_km, dist));
   }
-
+  debugLog(`angles: ${angles}`);
   let closestDist, farthestDist;
   const observingOutward = tarData.periapsis_km > obsData.periapsis_km;
 
