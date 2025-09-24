@@ -49,6 +49,27 @@ function debugLog(msg) {
   console.log(msg); // also log in console if available
 }
 
+function parseHorizonDate(str) {
+  // fix format to resolve ios bug
+  str = str.replace("A.D. ", "").trim();
+
+  const [datePart, timePart] = str.split(" ");
+  const [year, monStr, day] = datePart.split("-");
+  const time = timePart.split(".")[0];
+
+  const monthMap = {
+    Jan: "01", Feb: "02", Mar: "03", Apr: "04",
+    May: "05", Jun: "06", Jul: "07", Aug: "08",
+    Sep: "09", Oct: "10", Nov: "11", Dec: "12"
+  };
+
+  const month = monthMap[monStr];
+  if (!month) return new Date("Invalid");
+
+  const iso = `${year}-${month}-${day}T${time}Z`;
+  return new Date(iso);
+}
+
 async function loadBody(name) {
   return fetch(`data/${name}.json?ts=${Date.now()}`).then(r => r.json());
 }
@@ -112,7 +133,7 @@ async function compute() {
   document.getElementById("maxAngle").textContent = `${maxAngle} arcsec`;
 
   const years = parseInt(document.getElementById("yearRange").value);
-  const startDate = new Date(times[0]);
+  const startDate = parseHorizonDate(times[0]);  
   const endDate = new Date(startDate);
   endDate.setFullYear(endDate.getFullYear() + years);
 
@@ -120,7 +141,7 @@ async function compute() {
   const filteredTimes = [];
   const filteredAngles = [];
   for (let i = 0; i < times.length; i++) {
-    const t = new Date(times[i]);
+    const t = parseHorizonDate(times[i]);
     if (t <= endDate) {
       filteredTimes.push(times[i]);
       filteredAngles.push(angles[i]);
@@ -128,7 +149,8 @@ async function compute() {
   }
   debugLog(`endDate: ${endDate}`);
   debugLog(`years: ${years}`);
-  debugLog(`startDate: ${startDate}`);
+  debugLog(`startDate: ${startDate.toISOString()}`);
+  debugLog(`filteredTimes: ${filteredTimes}`);
   debugLog(`filteredAngles: ${filteredAngles}`);
 
   plotCharts(filteredTimes, filteredAngles);
